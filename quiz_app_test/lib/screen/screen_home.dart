@@ -26,7 +26,23 @@ class _HomeScreenState extends State<HomeScreen>{
           _buildStep(width,'2.랜덤으로 나오는 퀴즈 3개를 풀어보세요.'),
           _buildStep(width,'3.랜덤으로 나오는 퀴즈 3개를 풀어보세요.'),
           Padding(padding:EdgeInsets.all(width*0.024),),
-          
+          Container(padding: EdgeInsets.only(bottom:width*width*0.036),
+          child : Center(
+            child: ButtonTheme(
+              minWidth:width*0.8,
+              height:height*0.05,
+              shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),
+              ),
+              child: RaisedButton(
+                child:Text(
+                  'Quiz start',
+                  style:TextStyle(color:Colors.white),
+                  ),
+                  color:Colors.deepPurple,
+                  onPressed:(){},
+                  )
+            ),
+            ))
           ]
           )
           )
