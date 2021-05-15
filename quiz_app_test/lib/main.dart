@@ -11,15 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Quiz App',
-      //home: HomeScreen(),
-      home: Scaffold(
-      appBar: AppBar(
-          title: Text('Welcome to Flutter'),
-        ),
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }

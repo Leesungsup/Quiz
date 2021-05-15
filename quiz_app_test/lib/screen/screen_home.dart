@@ -10,6 +10,6 @@ class _HomeScreenState extends State<HomeScreen>{
     Size screenSize = MediaQuery.of(context).size;
     double width=screenSize.width;
     double height=screenSize.height;
-    return SafeArea(child: Scaffold(appBar:AppBar(title:Text('My Quiz'),backgroundColor: Colors.deepPurple, leading:Container(),),body:Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,children:<Widget>[Center(child:Image.asset(''),)])));
+    return SafeArea(child: Scaffold(appBar:AppBar(title:Text('My Quiz'),backgroundColor: Colors.deepPurple, leading:Container(),),body:Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,children:<Widget>[Center(child:Image.asset('images/quiz.png',width:width*0.8,height:height*0.8))])));
   }
 }
