@@ -39,8 +39,9 @@ class _QuizScreenState extends State<QuizScreen>{
       );
   }
   Widget _buildQuizCard(Quiz quiz,double width,double height){
-    return Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),border:Border.all(color:Colors.white)
-    ,),
+    return Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),border:Border.all(color:Colors.white),
+    color:Colors.white,
+    ),
     child :Column(
       crossAxisAlignment: CrossAxisAlignment.center,
     children:<Widget>[
@@ -84,6 +85,7 @@ class _QuizScreenState extends State<QuizScreen>{
               if(j==i){
                 _answerState[j]=true;
                 _answers[_currentIndex]=j;
+                print(_answers[_currentIndex]);
               }else{
                 _answerState[j]=false;
               }
