@@ -8,7 +8,7 @@ class QuizScreen extends StatefulWidget{
 }
 class _QuizScreenState extends State<QuizScreen>{
   List<int> _answer = [-1,-1,-1];
-  List<bool> _answerState = [false,false,false,false,;
+  List<bool> _answerState = [false,false,false,false];
   int _currentIndex=0;
   Widget build(BuildContext context){
     Size screenSize = MediaQuery.of(context).size;
