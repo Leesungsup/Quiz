@@ -66,9 +66,32 @@ class _QuizScreenState extends State<QuizScreen>{
           ),
           ),
           Expanded(child:Container()),
-          Column(children: _bulidCandidates(width,quiz),),
-    ])
-    ,);
+          Column(children: _bulidCandidates(width,quiz)
+          ,),
+          Container(
+      padding : EdgeInsets.all(width*0.024),
+      child:Center(
+        child:ButtonTheme(
+          minWidth:width*0.5,
+          height:height*0.05,
+          shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),
+          ),
+          child:RaisedButton(child:_currentIndex==widget.quizs.length-1?Text('결과보기'):Text('다음문제'),
+          textColor:Colors.white,
+          color:Colors.deepPurple,
+          onPressed:_answers[_currentIndex]==-1?null:(){
+            if(_currentIndex==widget.quizs.length-1){}
+            else{
+              _answerState=[false,false,false,false];
+              _currentIndex+=1;
+            }
+          })
+          )
+      ,)
+      ,)
+    ]
+    ),
+    );
   }
   List<Widget> _bulidCandidates(double width,Quiz quiz){
     List<Widget> _children=[];
