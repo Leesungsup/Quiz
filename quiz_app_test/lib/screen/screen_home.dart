@@ -8,7 +8,7 @@ class HomeScreen extends StatefulWidget{
 }
 
 class _HomeScreenState extends State<HomeScreen>{
-  List<Quiz> quiz=[
+  List<Quiz> quizs=[
     Quiz.fromMap({
       'title':'test',
       'candidates':['a','b','c','d'],
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen>{
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context)=>QuizScreen(quizs:quiz,
+                        builder: (context)=>QuizScreen(quizs:quizs,
                         ),
                         )
                         );
