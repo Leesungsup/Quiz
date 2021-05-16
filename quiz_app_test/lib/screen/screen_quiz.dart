@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_test/model/model_quiz.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:quiz_app_test/widget/widget_candidates.dart';
 class QuizScreen extends StatefulWidget{
   List<Quiz> quizs;
   QuizScreen({this.quizs});
@@ -8,7 +10,7 @@ class QuizScreen extends StatefulWidget{
   _QuizScreenState createState() => _QuizScreenState();
 }
 class _QuizScreenState extends State<QuizScreen>{
-  List<int> _answer = [-1,-1,-1];
+  List<int> _answers = [-1,-1,-1];
   List<bool> _answerState = [false,false,false,false];
   int _currentIndex=0;
   Widget build(BuildContext context){
@@ -49,10 +51,51 @@ class _QuizScreenState extends State<QuizScreen>{
         style: TextStyle(
           fontSize:width*0.05,
           fontWeight:FontWeight.bold,
-        )
-        )
-        )
+        ),
+        ),
+        ),
+        Container(
+          width:width*0.8,
+          padding:EdgeInsets.only(top:width*0.012),
+          child: AutoSizeText(
+            quiz.title,
+            textAlign:TextAlign.center,
+            maxLines:2,
+            style:TextStyle(fontSize: width*0.048,fontWeight:FontWeight.bold),
+          ),
+          ),
+          Expanded(child:Container()),
+          Column(children: _bulidCandidates(width,quiz),),
     ])
     ,);
+  }
+  List<Widget> _bulidCandidates(double width,Quiz quiz){
+    List<Widget> _children=[];
+    for(int i =0;i<4;i++){
+      _children.add(
+        CandWidget(
+          index:i,
+          text:quiz.candidates[i],
+        width:width,
+        answerState:_answerState[i],
+        tap:(){
+          setState((){
+            for(int j=0;j<4;j++){
+              if(j==i){
+                _answerState[j]=true;
+                _answers[_currentIndex]=j;
+              }else{
+                _answerState[j]=false;
+              }
+            }
+          });
+        })
+      );
+      _children.add(
+        Padding(padding: EdgeInsets.all(width*0.024),
+        ),
+      );
+    }
+    return _children;
   }
 }
