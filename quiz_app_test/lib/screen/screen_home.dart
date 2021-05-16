@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_test/model/model_quiz.dart';
+import 'package:quiz_app_test/screen/screen_quiz.dart';
+
 class HomeScreen extends StatefulWidget{
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -57,7 +59,15 @@ class _HomeScreenState extends State<HomeScreen>{
                   style:TextStyle(color:Colors.white),
                   ),
                   color:Colors.deepPurple,
-                  onPressed:(){},
+                  onPressed:(){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context)=>QuizScreen(quizs:quiz,
+                        ),
+                        )
+                        );
+                  },
                   )
             ),
             ))
