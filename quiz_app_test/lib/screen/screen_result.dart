@@ -44,7 +44,10 @@ class ResultScreen extends StatelessWidget{
             Text('당신의 점수는',style:TextStyle(fontSize: width*0.048,
             fontWeight:FontWeight.bold,),
             ),
-            Expanded(child: Container(),)
+            Expanded(child: Container(),
+            ),
+            Text(score.toString()+'/'+quizs.length.toString(),
+            style:TextStyle(fontSize: width*0.21,fontWeight: FontWeight.bold,color:Colors.red,))
           ],
           ),
           ),
