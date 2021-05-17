@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_test/model/model_quiz.dart';
+import 'package:quiz_app_test/screen/screen_home.dart';
 class ResultScreen extends StatelessWidget{
   List<int> answer;
   List<Quiz> quizs;
@@ -15,7 +16,9 @@ class ResultScreen extends StatelessWidget{
         score+=1;
       }
     }
-    return SafeArea(
+    return WillPopScope(
+      onWillPop:() async=>false,
+    child: SafeArea(
       child : Scaffold(appBar: AppBar(
         title:Text('My Quiz APP Test'),
         backgroundColor: Colors.deepPurple
@@ -47,15 +50,32 @@ class ResultScreen extends StatelessWidget{
             Expanded(child: Container(),
             ),
             Text(score.toString()+'/'+quizs.length.toString(),
-            style:TextStyle(fontSize: width*0.21,fontWeight: FontWeight.bold,color:Colors.red,))
+            style:TextStyle(fontSize: width*0.21,fontWeight: FontWeight.bold,color:Colors.red,),
+            ),
+            Padding(padding:EdgeInsets.all(width*0.012),)
           ],
           ),
           ),
+          Expanded(child: Container(),
+          ),
+          Container(padding:EdgeInsets.only(bottom:width*0.048),
+          child:ButtonTheme(minWidth : width*0.73,height:height*0.05,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child : RaisedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder:(context){
+              return HomeScreen();
+            }));
+          },
+          child:Text('홈으로 돌아가기'),
+          color:Colors.white,
+          textColor:Colors.black,)
+          )
+          )
         ],
         ),
         ),
         ),
         ),
+    )
     );
   }
 }
