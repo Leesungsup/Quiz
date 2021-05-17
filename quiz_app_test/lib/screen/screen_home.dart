@@ -30,7 +30,8 @@ class _HomeScreenState extends State<HomeScreen>{
     Size screenSize = MediaQuery.of(context).size;
     double width=screenSize.width;
     double height=screenSize.height;
-    return SafeArea(
+    return WillPopScope(onWillPop:() async=>false,
+    child: SafeArea(
       child: Scaffold(
         appBar:AppBar(
           title:Text('My Quiz'),
@@ -72,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen>{
             ),
             ))
           ]
+          )
           )
           )
           );
