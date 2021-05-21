@@ -12,12 +12,21 @@ class HomeScreen extends StatefulWidget{
 class _HomeScreenState extends State<HomeScreen>{
   List<Quiz> quizs=[];
   bool isLoading = false;
+  String url="https://lit-hamlet-76910.herokuapp.com/quiz/3/";
   _fetchQuizs() async{
     setState((){
       isLoading = true;
     });
-    final response =await http.get('https://lit-hamlet-76910.herokuapp.com/quiz/3/');
-    
+    final response =await http.get(Uri.parse(url));
+    if(response.statusCode==200){
+      setState((){
+        quizs=parseQuizs(utf8.decode(response.bodyBytes));
+        isLoading=false;
+      });
+    }
+    else{
+      throw Exception('failed to load data');
+    }
   }
  /* List<Quiz> quizs=[
     Quiz.fromMap({
@@ -72,13 +81,16 @@ class _HomeScreenState extends State<HomeScreen>{
                   ),
                   color:Colors.deepPurple,
                   onPressed:(){
-                    Navigator.push(
+                    _fetchQuizs().whenComplete((){
+                      return Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context)=>QuizScreen(quizs:quizs,
                         ),
                         )
                         );
+                    });
+                    
                   },
                   )
             ),

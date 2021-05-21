@@ -9,6 +9,6 @@ class Quiz{
   answer=map['answer'];
   Quiz.fromJson(Map<String,dynamic>json):
   title=json['title'],
-  candidates=json['body'].toStirng().split('/'),
+  candidates=json['body'].toString().split('/'),
   answer=json['answer'];
 }
