@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_test/model/api_adapter.dart';
 import 'package:quiz_app_test/model/model_quiz.dart';
 import 'package:quiz_app_test/screen/screen_quiz.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 class HomeScreen extends StatefulWidget{
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen>{
-  List<Quiz> quizs=[
+  List<Quiz> quizs=[];
+  bool isLoading = false;
+  _fetchQuizs() async{
+    setState((){
+      isLoading = true;
+    });
+    final response =await http.get('https://lit-hamlet-76910.herokuapp.com/quiz/3/');
+    
+  }
+ /* List<Quiz> quizs=[
     Quiz.fromMap({
       'title':'test',
       'candidates':['a','b','c','d'],
@@ -24,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen>{
       'candidates':['a','b','c','d'],
       'answer':0
     }),
-  ];
+  ];*/
   @override
   Widget build(BuildContext context){
     Size screenSize = MediaQuery.of(context).size;
