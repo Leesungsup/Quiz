@@ -13,5 +13,5 @@ def helloAPI(request):
 def randomQuiz(request,id):
     totalQuizs=Quiz.objects.all()
     randomQuizs=random.sample(list(totalQuizs),id)
-    serializer=QuizSerializer(randomQuizs,many=True)
+    serializer=QuizSerializer(randomQuizs,many=True)#many=True 다수의 데이터 직렬화
     return Response(serializer.data)
