@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 from .models import Quiz
 from .serializes import QuizSerializer
 import random
+import requests
+from bs4 import BeautifulSoup
 # Create your views here.
 @api_view(['GET'])
 def helloAPI(request):
