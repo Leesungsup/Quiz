@@ -8,7 +8,15 @@ import random
 @api_view(['GET'])
 def helloAPI(request):
     return Response("Hello world!")
-
+@api_view(['GET'])
+def hello(request):
+    return Response("Hello!")
+@api_view(['GET'])
+def ket(request):
+    return Response("KetAI")
+@api_view(['GET'])
+def op(request):
+    return Response("opening")
 @api_view(['GET'])
 def randomQuiz(request,id):
     totalQuizs=Quiz.objects.all()

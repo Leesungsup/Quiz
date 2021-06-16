@@ -3,4 +3,7 @@ from .views import *
 urlpatterns=[
     path("Hello/",helloAPI),
     path("<int:id>/",randomQuiz),
+    path("Hello1/",hello),
+    path("Ket/",ket),
+    path("op/",op),
 ]

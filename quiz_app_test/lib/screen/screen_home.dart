@@ -10,6 +10,7 @@ class HomeScreen extends StatefulWidget{
 }
 
 class _HomeScreenState extends State<HomeScreen>{
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<Quiz> quizs=[];
   bool isLoading = false;
   String url="https://lit-hamlet-76910.herokuapp.com/quiz/3/";
@@ -53,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen>{
     return WillPopScope(onWillPop:() async=>false,
     child: SafeArea(
       child: Scaffold(
+        key:_scaffoldKey,
         appBar:AppBar(
           title:Text('My Quiz'),
           backgroundColor: Colors.deepPurple, leading:Container(),),
@@ -81,6 +83,12 @@ class _HomeScreenState extends State<HomeScreen>{
                   ),
                   color:Colors.deepPurple,
                   onPressed:(){
+                    _scaffoldKey.currentState.showSnackBar(SnackBar(
+                      content:Row(
+                        children:<Widget>[
+                          CircularProgressIndicator(),
+                          Text('Loading....'),
+                        ])));
                     _fetchQuizs().whenComplete((){
                       return Navigator.push(
                       context,
