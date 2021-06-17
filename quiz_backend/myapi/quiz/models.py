@@ -15,4 +15,4 @@ class Player_info(models.Model):
     team=models.CharField(max_length=40)
     value=models.CharField(max_length=20)
     class Meta:
-        db_table = 'recipe'
+        db_table = 'player'
