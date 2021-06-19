@@ -12,10 +12,9 @@ def csvwriter():
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myapi.settings")	# 1. 여기서 프로젝트명.settings입력
     django.setup()# 위의 과정까지가 python manage.py shell을 키는 것과 비슷한 효과
     CSV_PATH = './transfermarket1~25.csv'	# 3. csv 파일 경로
-    with open(CSV_PATH, newline='') as csvfile:	# 4. newline =''
+    with open(CSV_PATH, newline='',encoding='UTF-8') as csvfile:	# 4. newline =''
         data_reader = csv.DictReader(csvfile)
         for row in data_reader:
-            print(row)
             Player_name.objects.create(		# 5. class명.objects.create
                 name = row['name']
              # 6
