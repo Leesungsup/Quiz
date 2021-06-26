@@ -25,7 +25,7 @@ def crawler():
             string=soup.find_all('tr',{'class':['odd','even']})
         for info in string:
             information=info.find_all('td')
-            number1=information[0].get_text()
+            number1=int(information[0].get_text())
             name1=information[3].get_text()
             position1=information[4].get_text()
             age1=information[5].get_text()
@@ -33,7 +33,7 @@ def crawler():
             team1=information[7].img['alt']
             value1=information[8].span['title']
             player={'number':number1,'name':name1,'position':position1,'age':age1,'nation':nation1,'team':team1,'value':value1}
-            number.append(information[0].get_text())
+            number.append(int(information[0].get_text()))
             name.append(information[3].get_text())
             position.append(information[4].get_text())
             age.append(information[5].get_text())
