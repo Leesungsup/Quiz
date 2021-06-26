@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from .models import Quiz
 from .models import Player_info
 from .serializes import QuizSerializer
+from .serializes import PlayerSerializer
 import random
 # Create your views here.
 @api_view(['GET'])
@@ -24,3 +25,9 @@ def randomQuiz(request,id):
     randomQuizs=random.sample(list(totalQuizs),id)
     serializer=QuizSerializer(randomQuizs,many=True)#many=True 다수의 데이터 직렬화
     return Response(serializer.data)
+@api_view(['GET'])
+def playerQuiz(request,id):
+    totalPlayers=Player_info.objects.all()
+    randomPlayerQuizs=random.sample(list(totalPlayers),number)
+    serializer1=PlayerSerializer(randomPlayerQuizs,many=True)#many=True 다수의 데이터 직렬화
+    return Response(serializer1.data)
